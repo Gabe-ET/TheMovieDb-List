@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Movie List</string>
+
+    <string name="detail_error">Failed loading movie details</string>
+    <string name="list_error">Failed loading movie list</string>
+
+    <!-- API Strings -->
+    <string name="api_key">6812dd97670ff0e8c016b2789c168347</string>
+
+    <string name="list_poster_path_prefix">https://image.tmdb.org/t/p/w185</string>
+    <string name="detail_poster_path_prefix">https://image.tmdb.org/t/p/w342</string>
+    <string name="backdrop_path_prefix">https://image.tmdb.org/t/p/w185</string>
+</resources>
