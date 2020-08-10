@@ -2,11 +2,13 @@ package com.example.movielist.ui
 
 import android.content.Context
 import android.content.Intent
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.movielist.DetailActivity
@@ -96,9 +98,10 @@ class MovieListViewController (private val context: Context, inflater: LayoutInf
             }
 
             override fun onFailure(call: Call<MovieList>, t: Throwable) {
-                TODO("Not yet implemented")
+                pages--
+                Log.e(MovieListViewController::class.java.simpleName, t.localizedMessage, t)
+                Toast.makeText(context, R.string.page_error, Toast.LENGTH_LONG).show()
             }
         })
     }
-
 }

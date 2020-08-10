@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ProgressBar
+import android.widget.TextView
 import android.widget.Toast
 import com.example.movielist.data.MovieList
 import com.example.movielist.networking.StandardApiCalls
@@ -15,9 +16,10 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class MainActivity : AppCompatActivity() {
-        lateinit var movieListViewController: MovieListViewController
-        lateinit var viewContainer: ViewGroup
-        lateinit var progressBar: ProgressBar
+    lateinit var movieListViewController: MovieListViewController
+    lateinit var viewContainer: ViewGroup
+    lateinit var progressBar: ProgressBar
+    private lateinit var call: Call<MovieList>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,7 +27,7 @@ class MainActivity : AppCompatActivity() {
         viewContainer = findViewById(R.id.main_view_container)
         progressBar = findViewById(R.id.progressBar)
         movieListViewController = MovieListViewController(this, layoutInflater, viewContainer)
-        StandardApiCalls.loadNextPage(this,0, getString(R.string.api_key), object: Callback<MovieList> {
+        call = StandardApiCalls.loadNextPage(this,0, getString(R.string.api_key), object: Callback<MovieList> {
 
             override fun onResponse(call: Call<MovieList>, response: Response<MovieList>) {
                 if (response.isSuccessful) {
@@ -38,14 +40,24 @@ class MainActivity : AppCompatActivity() {
             }
 
             override fun onFailure(call: Call<MovieList>, t: Throwable) {
-                Log.e(this@MainActivity.localClassName, t.localizedMessage, t)
+                Log.e(MainActivity::class.java.simpleName, t.localizedMessage, t)
                 Toast.makeText(this@MainActivity, R.string.list_error, Toast.LENGTH_LONG).show()
                 showErrorState()
             }
         })
     }
 
+    override fun onStop() {
+        super.onStop()
+        if(!call.isExecuted|| !call.isCanceled) {
+            call.cancel()
+        }
+        // Lets just simplify the lifecycle at bit for this project
+        finish()
+    }
+
     private fun showErrorState() {
-        TODO("Not yet implemented")
+        progressBar.visibility = View.GONE
+        findViewById<TextView>(R.id.error).visibility = View.VISIBLE
     }
 }

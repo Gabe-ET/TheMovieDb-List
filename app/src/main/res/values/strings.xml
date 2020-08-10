@@ -3,6 +3,8 @@
 
     <string name="detail_error">Failed loading movie details</string>
     <string name="list_error">Failed loading movie list</string>
+    <string name="main_error">Unfortunately there was an error connecting to TMDb. Please restart the app later</string>
+    <string name="page_error">Failed loading next page</string>
 
     <!-- API Strings -->
     <string name="api_key">6812dd97670ff0e8c016b2789c168347</string>

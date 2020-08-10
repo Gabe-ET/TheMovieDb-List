@@ -50,14 +50,14 @@ class DetailActivity : AppCompatActivity() {
     }
 
     private fun closeOnError(t: Throwable) {
-        Log.e(this@DetailActivity.localClassName, t.localizedMessage, t)
+        Log.e(DetailActivity::class.java.simpleName, t.localizedMessage, t)
         Toast.makeText(this@DetailActivity, R.string.detail_error, Toast.LENGTH_LONG).show()
         this@DetailActivity.finish()
     }
 
     override fun onStop() {
         super.onStop()
-        if(call.isCanceled || call.isCanceled) {
+        if(!call.isCanceled || !call.isCanceled) {
             call.cancel()
         }
     }
