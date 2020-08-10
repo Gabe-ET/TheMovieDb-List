@@ -10,4 +10,14 @@
     <string name="list_poster_path_prefix">https://image.tmdb.org/t/p/w185</string>
     <string name="detail_poster_path_prefix">https://image.tmdb.org/t/p/w342</string>
     <string name="backdrop_path_prefix">https://image.tmdb.org/t/p/w185</string>
+    <string name="api_key_param">api_key</string>
+    <string name="language_param">language</string>
+    <string name="sort_param">sort_by</string>
+    <string name="adult_param">include_adult</string>
+    <string name="video_param">include_video</string>
+    <string name="page_param">page</string>
+    <string name="language_value">en-US</string>
+    <string name="sort_value">popularity.desc</string>
+    <string name="adult_value">false</string>
+    <string name="video_value">false</string>
 </resources>

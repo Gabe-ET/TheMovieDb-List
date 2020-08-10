@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity() {
         viewContainer = findViewById(R.id.main_view_container)
         progressBar = findViewById(R.id.progressBar)
         movieListViewController = MovieListViewController(this, layoutInflater, viewContainer)
-        StandardApiCalls.loadNextPage(0, getString(R.string.api_key), object: Callback<MovieList> {
+        StandardApiCalls.loadNextPage(this,0, getString(R.string.api_key), object: Callback<MovieList> {
 
             override fun onResponse(call: Call<MovieList>, response: Response<MovieList>) {
                 if (response.isSuccessful) {

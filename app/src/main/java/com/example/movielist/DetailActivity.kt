@@ -30,7 +30,7 @@ class DetailActivity : AppCompatActivity() {
         progressBar = findViewById(R.id.progressBar)
         val id: Int? = intent.extras?.get(MOVIE_ID) as Int
         id?.let {
-            call = StandardApiCalls.loadMovie(id, getString(R.string.api_key), object : Callback<MovieDetail> {
+            call = StandardApiCalls.loadMovie(this, id, getString(R.string.api_key), object : Callback<MovieDetail> {
                 override fun onResponse(call: Call<MovieDetail>, response: Response<MovieDetail>) {
                     if (response.isSuccessful) {
                         progressBar.visibility = View.GONE

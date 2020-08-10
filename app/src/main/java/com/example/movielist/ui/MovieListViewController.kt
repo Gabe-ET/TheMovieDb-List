@@ -3,7 +3,6 @@ package com.example.movielist.ui
 import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
-import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
@@ -86,7 +85,7 @@ class MovieListViewController (private val context: Context, inflater: LayoutInf
     }
 
     fun loadMoreMovies( page: Int){
-        StandardApiCalls.loadNextPage(page, context.getString(R.string.api_key), object: Callback<MovieList> {
+        StandardApiCalls.loadNextPage(context, page, context.getString(R.string.api_key), object: Callback<MovieList> {
 
             override fun onResponse(call: Call<MovieList>, response: Response<MovieList>) {
                 if (response.isSuccessful) {
